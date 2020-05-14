@@ -5,13 +5,13 @@
 * **/accounts/signin**:
   - Component: SignIn
 * **/accounts/signup**:  
-** Component: SignUp
+  - Component: SignUp
 * **/accounts/password/reset**:
-** Component: PasswordReset
+  - Component: PasswordReset
 
 ###### /:username
 
 * **/:username**:
-** Component: UserProfile
+  - Component: UserProfile
 * **/:username/:datasetname**: 
-** Component: Dataset
+  - Component: Dataset
