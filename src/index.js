@@ -1,19 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Router } from "react-router-dom";
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './index.css';
-import App from './App';
+import App from './components/app';
+import 'typeface-roboto';
 import * as serviceWorker from './serviceWorker';
-import { createBrowserHistory } from "history";
-const hist = createBrowserHistory();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
+    <React.StrictMode>
         <App />
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

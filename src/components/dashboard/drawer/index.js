@@ -20,7 +20,8 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     root: {
-        display: "flex"
+        display: "flex",
+        paddingTop: "5em",
     },
     toolbarIcon: {
         display: "flex",
@@ -33,6 +34,8 @@ const useStyles = makeStyles(theme => ({
         position: "relative",
         whiteSpace: "nowrap",
         width: drawerWidth,
+        backgroundColor: "transparent",
+        borderRight: "0px",
         transition: theme.transitions.create("width", {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen
@@ -54,6 +57,18 @@ const useStyles = makeStyles(theme => ({
         height: "100vh",
         overflow: "auto"
     },
+    listItemText: {
+        fontSize: "14px",
+        color: theme.palette.text.secondary,
+    },
+    listItemIcon: {
+        fontSize: "14px",
+    },
+    drawerListItem: {
+        paddingLeft: "30px",
+        borderTopRightRadius: "1em",
+        borderBottomRightRadius: "1em",
+    },
     paper: {
         padding: theme.spacing(2),
         display: "flex",
@@ -67,28 +82,25 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function MyDrawer(props) {
+    const [open, setOpen] = React.useState(false);
     const classes = useStyles();
     let location = useLocation();
 
-    const id = 123;
+    const handleDrawerOpen = () => setOpen(!open); 
 
+    console.log(open);
     return (
         <Drawer
             variant="permanent"
             classes={{
                 paper: clsx(
+                    classes.root,
                     classes.drawerPaper,
-                    !props.open && classes.drawerPaperClose
+                    !open && classes.drawerPaperClose
                 )
             }}
-            open={props.open}
+            open={open}
         >
-            <div className={classes.toolbarIcon}>
-                <IconButton onClick={props.handleDrawerClose}>
-                    <ChevronLeftIcon />
-                </IconButton>
-            </div>
-            <Divider />
             <List>
                 {mainListItems.map(item => {
                     return (
@@ -98,11 +110,13 @@ export default function MyDrawer(props) {
                             to={item.link} 
                         >
                             <ListItem 
+                                className={classes.drawerListItem}
                                 selected={item.link === location.pathname ? true : false}
                                 button
                             >
-                                <ListItemIcon>{item.link === location.pathname ? item.icon.selected : item.icon.default }</ListItemIcon>
+                                <ListItemIcon className={classes.listItemIcon}>{item.link === location.pathname ? item.icon.selected : item.icon.default }</ListItemIcon>
                                 <ListItemText 
+                                    className={classes.listItemText}
                                     primary={item.title}
                                 />
                             </ListItem>
@@ -112,11 +126,15 @@ export default function MyDrawer(props) {
             </List>
             <Spacer />
             <List>
-                    <ListItem button>
+                    <ListItem 
+                        onClick={handleDrawerOpen}
+                        className={classes.drawerListItem}
+                        button
+                    >
                         <ListItemIcon>
                             <SettingsIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Settings" />
+                        <ListItemText className={classes.listItemText} primary="Settings" />
                     </ListItem>
             </List>
             <Divider />

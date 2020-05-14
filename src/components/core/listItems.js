@@ -6,8 +6,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PeopleIcon from "@material-ui/icons/People";
+import ShowChart from "@material-ui/icons/ShowChart";
+import Comment from "@material-ui/icons/Comment";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
@@ -33,16 +33,16 @@ export const mainListItems = [
         title: "Orders", 
         link: "/data/id/readme", 
         icon: {
-            default: <ShoppingCartIcon />,
-            selected: <ShoppingCartIcon color="primary" />
+            default: <ShowChart />,
+            selected: <ShowChart color="primary" />
         }
     },
     {
         title: "Customers", 
         link: "/accounts/signin", 
         icon: {
-            default: <PeopleIcon />,
-            selected: <PeopleIcon color="primary" />
+            default: <Comment />,
+            selected: <Comment color="primary" />
         }
     },
     {

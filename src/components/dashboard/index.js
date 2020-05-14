@@ -11,13 +11,18 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import MyAppBar from '../core/AppBar';
 import MyDrawer from '../core/Drawer';
 import Loading from '../misc/Loading';
-// const Overview = React.lazy(() => {
-//     return new Promise(resolve => {
-//         setTimeout(() => resolve(import('./Overview')), 1000)
-//     })
-// })
-import Overview from './Overview';
-import ReadMe from './ReadMe/';
+const Overview = React.lazy(() => {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(import('./Overview')), 1000)
+    })
+})
+const ReadMe = React.lazy(() => {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(import('./ReadMe')), 1000)
+    })
+})
+// import Overview from './Overview';
+// import ReadMe from './ReadMe/';
 
 const drawerWidth = 240;
 
@@ -35,21 +40,6 @@ const useStyles = makeStyles(theme => ({
         padding: "0 8px",
         ...theme.mixins.toolbar
     },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-        transition: theme.transitions.create(["width", "margin"], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen
-        })
-    },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(["width", "margin"], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen
-        })
-    },
     menuButton: {
         marginRight: 36
     },
@@ -58,26 +48,6 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         flexGrow: 1
-    },
-    drawerPaper: {
-        position: "relative",
-        whiteSpace: "nowrap",
-        width: drawerWidth,
-        transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen
-        })
-    },
-    drawerPaperClose: {
-        overflowX: "hidden",
-        transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up("sm")]: {
-            width: theme.spacing(9)
-        }
     },
     appBarSpacer: theme.mixins.toolbar,
     content: {
@@ -104,11 +74,9 @@ function Dashboard(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
-    /* Handlers */   
     const handleDrawerOpen = () => setOpen(true);
     const handleDrawerClose = () => setOpen(false);
 
-    /* Render */ 
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -120,12 +88,12 @@ function Dashboard(props) {
                 open={open}
                 handleDrawerClose={handleDrawerClose}
             />
-            <Switch>
-                <Route path="/data/:id/overview" component={Overview} />
-                <Route path="/data/:id/readme" component={ReadMe} />
-            </Switch>
-            {/* <Overview /> */}
-            
+            <React.Suspense fallback={<Loading />}>
+                <Switch>
+                    <Route path="/data/:id/overview" component={Overview} />
+                    <Route path="/data/:id/readme" component={Overview} />
+                </Switch>
+            </React.Suspense>
         </div>
     );
 }

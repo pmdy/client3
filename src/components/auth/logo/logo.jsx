@@ -1,19 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import propTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Link from '@material-ui/core/Link';
+import withStyles from './logo-styles';
 
-const useStyles = makeStyles((theme) => ({
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-}));
-
-function Logo() {
-  const classes = useStyles();
-
+function Logo({ classes }) {
     return (
         <Link href='/'>
             <Avatar className={classes.avatar}>
@@ -23,4 +15,4 @@ function Logo() {
     )
 }
 
-export default Logo;
+export default withStyles(Logo);
