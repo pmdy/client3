@@ -2,16 +2,16 @@
 
 ###### /accounts
 
-* **/accounts/signin**:
+* **/accounts/signin**
   - Component: SignIn
-* **/accounts/signup**:  
+* **/accounts/signup**
   - Component: SignUp
-* **/accounts/password/reset**:
+* **/accounts/password/reset**
   - Component: PasswordReset
 
 ###### /:username
 
-* **/:username**:
+* **/:username**
   - Component: UserProfile
-* **/:username/:datasetname**: 
+* **/:username/:datasetname**
   - Component: Dataset
