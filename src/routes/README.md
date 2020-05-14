@@ -3,7 +3,7 @@
 ###### /accounts
 
 * **/accounts/signin**:
-- Component: SignIn
+  - Component: SignIn
 * **/accounts/signup**:  
 ** Component: SignUp
 * **/accounts/password/reset**:
