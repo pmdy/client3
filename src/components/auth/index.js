@@ -1,6 +1,4 @@
-import Logo from './logo';
-import PasswordReset from './password-reset';
-import SignIn from './sign-in';
-import SignUp from './sign-up';
-
-export { Logo, PasswordReset, SignIn, SignUp };
+export { default as Logo } from './logo';
+export { default as SignIn } from './sign-in';
+export { default as SignUp } from './sign-up';
+export { default as PasswordReset } from './password-reset';
