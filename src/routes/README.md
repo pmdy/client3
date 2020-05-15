@@ -12,6 +12,6 @@
 ###### /:username
 
 * **/:username**
-  - Component: UserProfile
+  - Component: Profile
 * **/:username/:datasetname**
   - Component: Dataset
