@@ -3,6 +3,6 @@ import { Route } from 'react-router-dom';
 import Profile from 'components';
 
 export default function ProfileRoute() {
-    return <Route key='profile' path='/page' component={Profile} />
+    return <Route key='profile' path='/:username' component={Profile} />
 }
 
